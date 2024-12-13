@@ -1,5 +1,6 @@
-﻿using JwtStore.Core.SharedContext.Extensions;
-using JwtStore.Core.SharedContext.ValueObjects;
+﻿using JwtStore.Core.Contexts.AccountContext.ValueObjects;
+using JwtStore.Core.Contexts.SharedContext.Extensions;
+using JwtStore.Core.Contexts.SharedContext.ValueObjects;
 using System.Text.RegularExpressions;
 
 namespace JwtStore.Core.AccountContext.ValueObjects;
@@ -7,6 +8,8 @@ namespace JwtStore.Core.AccountContext.ValueObjects;
 public partial class Email : ValueObject
 {
     private const string Pattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+
+    protected Email() { }
 
     public Email(string address)
     {
@@ -22,7 +25,7 @@ public partial class Email : ValueObject
             throw new Exception("E-mail inválido");
     }
 
-    public string Address { get; }
+    public string Address { get; } = string.Empty;
     public string Hash => Address.ToBase64();
     public Verification Verification { get; private set; } = new();
 
