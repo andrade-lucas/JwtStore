@@ -19,6 +19,13 @@ public class User : Entity
         Password = new Password(password);
     }
 
+    public User(string name,  Email email, Password password)
+    {
+        Name = name;
+        Email = email;
+        Password = password;
+    }
+
     public void UpdatePassword(string plainTextPassword, string code)
     {
         if (!string.Equals(code.Trim(), Password.ResetCode.Trim(), StringComparison.InvariantCultureIgnoreCase))
