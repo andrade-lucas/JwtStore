@@ -22,7 +22,7 @@ public static class BuilderExtension
     {
         builder.Services.AddDbContext<AppDbContext>(x => 
             x.UseSqlServer(Configuration.Database.ConnectionString, 
-            b => b.MigrationsAssembly("JwtStore.Infra")));
+            b => b.MigrationsAssembly("JwtStore.Api")));
     }
 
     public static void AddJwtAuthentication(this WebApplicationBuilder builder)
