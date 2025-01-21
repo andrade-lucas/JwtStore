@@ -20,10 +20,10 @@ public class Response : SharedContext.UseCases.Response
         Message = message;
         Status = 201;
         Notifications = null;
-        ResponseData = data;
+        Data = data;
     }
 
-    public ResponseData? ResponseData { get; set; }
+    public ResponseData? Data { get; set; }
 }
 
 public record ResponseData(Guid Id, string Name, string Email);
