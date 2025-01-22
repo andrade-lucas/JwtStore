@@ -16,6 +16,9 @@ public static class BuilderExtension
         Configuration.Secrets.ApiKey = builder.Configuration.GetValue<string>("") ?? string.Empty;
         Configuration.Secrets.JwtPrivateKey = builder.Configuration.GetValue<string>("JwtPrivateKey") ?? string.Empty;
         Configuration.Secrets.PasswordSaltKey = builder.Configuration.GetValue<string>("PasswordSaltKey") ?? string.Empty;
+        Configuration.SendGrid.ApiKey = builder.Configuration.GetValue<string>("SendGridApiKey") ?? string.Empty;
+        Configuration.Email.DefaultFromEmail = builder.Configuration.GetValue<string>("Email:DefaultFromEmail") ?? string.Empty;
+        Configuration.Email.DefaultFromName = builder.Configuration.GetValue<string>("Email:DefaultFromName") ?? string.Empty;
     }
 
     public static void AddDatabase(this WebApplicationBuilder builder)
