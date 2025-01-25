@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddConfiguration();
 builder.AddDatabase();
 builder.AddJwtAuthentication();
+builder.AddMediator();
 
 var app = builder.Build();
 app.UseHttpsRedirection();
