@@ -46,6 +46,7 @@ public static class BuilderExtension
                     ValidateAudience = false
                 };
             });
+        builder.Services.AddAuthorization();
     }
 
     public static void AddMediator(this WebApplicationBuilder builder)
