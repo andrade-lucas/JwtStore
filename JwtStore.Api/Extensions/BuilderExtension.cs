@@ -47,4 +47,9 @@ public static class BuilderExtension
                 };
             });
     }
+
+    public static void AddMediator(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(Configuration).Assembly));
+    }
 }
