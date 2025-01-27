@@ -42,7 +42,7 @@ public class Password : ValueObject
 
         password += Configuration.Secrets.PasswordSaltKey;
 
-        using var algorithm = new Rfc2898DeriveBytes(password, saltSize, keySize, HashAlgorithmName.SHA256);
+        using var algorithm = new Rfc2898DeriveBytes(password, saltSize, iterations, HashAlgorithmName.SHA256);
         var key = Convert.ToBase64String(algorithm.GetBytes(keySize));
         var salt = Convert.ToBase64String(algorithm.Salt);
 
