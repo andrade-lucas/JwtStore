@@ -21,6 +21,9 @@ public class Password : ValueObject
         Hash = Hashing(password);
     }
 
+    public bool Challenge(string plainTextPassword)
+        => Verify(Hash, plainTextPassword);
+
     private static string Generate(short length = 16, bool includeSpecialChars = true, bool upperCase = false)
     {
         var chars = includeSpecialChars ? Valid + Special : Valid;
