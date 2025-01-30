@@ -21,6 +21,9 @@ public class Password : ValueObject
         Hash = Hashing(password);
     }
 
+    public bool Challenge(string plainTextPassword)
+        => Verify(Hash, plainTextPassword);
+
     private static string Generate(short length = 16, bool includeSpecialChars = true, bool upperCase = false)
     {
         var chars = includeSpecialChars ? Valid + Special : Valid;
@@ -42,7 +45,7 @@ public class Password : ValueObject
 
         password += Configuration.Secrets.PasswordSaltKey;
 
-        using var algorithm = new Rfc2898DeriveBytes(password, saltSize, keySize, HashAlgorithmName.SHA256);
+        using var algorithm = new Rfc2898DeriveBytes(password, saltSize, iterations, HashAlgorithmName.SHA256);
         var key = Convert.ToBase64String(algorithm.GetBytes(keySize));
         var salt = Convert.ToBase64String(algorithm.Salt);
 
