@@ -10,6 +10,8 @@ public class RoleMap : IEntityTypeConfiguration<Role>
     {
         builder.ToTable("Role");
 
+        builder.HasKey(x => x.Id);
+
         builder.Property(x => x.Name)
             .HasColumnName("Title")
             .HasColumnType("NVARCHAR")
